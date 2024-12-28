@@ -1,21 +1,15 @@
-function checkingTheString(string, length) {
-  return string.length <= length;
-}
-// Cтрока короче 20 символов
-checkingTheString('проверяемая строка', 20); // true
-// Длина строки ровно 18 символов
-checkingTheString('проверяемая строка', 18); // true
-// Строка длиннее 10 символов
-checkingTheString('проверяемая строка', 10); // false
+function checkMeetingTime(workStart, workEnd, meetingStart, meetingDuration) {
+  const workStartTime = parseTime(workStart);
+  const workEndTime = parseTime(workEnd);
+  const meetingStartTime = parseTime(meetingStart);
+  const meetingEndTime = meetingStartTime + meetingDuration;
 
-function isPalindromeString(string){
-  string = string.toLowerCase();
-  const stringReverse = string.split('').reverse().join('');
-  return string === stringReverse;
+  return (meetingStartTime >= workStartTime && meetingEndTime <= workEndTime);
 }
-// Строка является палиндромом
-isPalindromeString('топот'); // true
-// Несмотря на разный регистр, тоже палиндром
-isPalindromeString('ДовОд'); // true
-// Это не палиндром
-isPalindromeString('Кекс'); // false
+
+function parseTime(timeStr) {
+  const [hours, minutes] = timeStr.split(':').map(Number);
+  return hours * 60 + minutes;
+}
+
+checkMeetingTime();
