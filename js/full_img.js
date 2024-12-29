@@ -1,7 +1,7 @@
 /* eslint-disable no-shadow */
 /* eslint-disable no-use-before-define */
 
-import {isEscEvent,getWordEnding} from './util.js';
+import {createID, getWordEnding} from './util.js';
 
 const bigPicture = document.querySelector('.big-picture');
 const social = bigPicture.querySelector('.social');
@@ -26,7 +26,6 @@ const checkTheHiddenLoadComments = (flag) => {
   }
 };
 
-
 const createComment = (comment) => {
   const commentBlock = commentTemplate.cloneNode(true);
   const commentImg = commentBlock.querySelector('.social__picture');
@@ -49,7 +48,7 @@ const createCommentsFragment = (comments) => {
 };
 
 const onPopupEscKeydown = (evt) => {
-  if (isEscEvent(evt)){
+  if (createID(evt)){
     evt.preventDefault();
     closeBigPicture();
   }
